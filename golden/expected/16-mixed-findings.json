@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "fileName": "16-mixed-findings.fw",
+  "fileSize": 340,
+  "sha256": "aec3112030a6895dbcc8b03edb94fc0ac08824bc3cd703814006ba7adf0500ce",
+  "header": {
+    "magic": "FWAI",
+    "headerVersion": 1,
+    "headerSize": 32,
+    "fileSize": 340,
+    "partitionTableOffset": 596,
+    "partitionCount": 1,
+    "flags": 0,
+    "headerCrc32": 516587793,
+    "reserved": "0000000000000000"
+  },
+  "partitions": [],
+  "findings": [
+    {
+      "ruleId": "F004",
+      "severity": "critical",
+      "offset": 12,
+      "entryIndex": -1,
+      "message": "partition table extends beyond file or partition count exceeds 128"
+    },
+    {
+      "ruleId": "F002",
+      "severity": "critical",
+      "offset": 20,
+      "entryIndex": -1,
+      "message": "header CRC-32 mismatch"
+    }
+  ],
+  "signature": null,
+  "summary": {
+    "findingCounts": {
+      "critical": 2,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 0
+    },
+    "totalFindings": 2,
+    "partitionsTotal": 0,
+    "partitionsTruncated": 0,
+    "partitionsUnparseable": 0
+  }
+}

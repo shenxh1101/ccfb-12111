@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "fileName": "10-lz-invalid-token.fw",
+  "fileSize": 71,
+  "sha256": "9b0923cad40074e65c053bb23c399e12e5de7cbecbb45eb452274c8f0ec89d0d",
+  "header": {
+    "magic": "FWAI",
+    "headerVersion": 1,
+    "headerSize": 32,
+    "fileSize": 71,
+    "partitionTableOffset": 32,
+    "partitionCount": 1,
+    "flags": 0,
+    "headerCrc32": 2252859302,
+    "reserved": "0000000000000000"
+  },
+  "partitions": [
+    {
+      "entryIndex": 0,
+      "name": "badlz",
+      "entryType": 2,
+      "entryTypeLabel": "LZ",
+      "entryOffset": 68,
+      "storedSize": 3,
+      "rawSize": 16,
+      "entryCrc32": 2184588631,
+      "crcValid": true,
+      "truncated": false,
+      "unparseable": false,
+      "detail": {
+        "lz": {
+          "controlBytes": 1,
+          "literalTokens": 0,
+          "matchTokens": 0,
+          "consumed": 1,
+          "decompressedSize": 0
+        }
+      }
+    }
+  ],
+  "findings": [
+    {
+      "ruleId": "F007",
+      "severity": "high",
+      "offset": 68,
+      "entryIndex": 0,
+      "message": "malformed LZ token: back-reference with empty output or token crossing segment boundary"
+    }
+  ],
+  "signature": null,
+  "summary": {
+    "findingCounts": {
+      "critical": 0,
+      "high": 1,
+      "medium": 0,
+      "low": 0,
+      "info": 0
+    },
+    "totalFindings": 1,
+    "partitionsTotal": 1,
+    "partitionsTruncated": 0,
+    "partitionsUnparseable": 0
+  }
+}

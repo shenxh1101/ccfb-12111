@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "samples": [
+    {
+      "id": "01-valid-basic",
+      "fileName": "01-valid-basic.fw",
+      "title": "最小合法包",
+      "description": "单 RAW 段，全部校验通过",
+      "tags": [
+        "valid",
+        "raw"
+      ],
+      "size": 452,
+      "sha256": "cef26d90b0a4ed59632da6019c86a41e95951672435eb44d89713844bb19034c",
+      "ruleIds": [],
+      "findingCount": 0
+    },
+    {
+      "id": "02-valid-lz-signed",
+      "fileName": "02-valid-lz-signed.fw",
+      "title": "LZ 多段签名包",
+      "description": "两个 LZ 段 + 完整签名段",
+      "tags": [
+        "valid",
+        "lz",
+        "signed"
+      ],
+      "size": 808,
+      "sha256": "90596bc0161e8ba81f99f8b8d36b809e1b88ebd42abfc970b8e00fd45935aa23",
+      "ruleIds": [],
+      "findingCount": 0
+    },
+    {
+      "id": "03-truncated-header",
+      "fileName": "03-truncated-header.fw",
+      "title": "截断-文件头",
+      "description": "只有 10 字节，F001，禁止崩溃",
+      "tags": [
+        "truncated",
+        "malformed"
+      ],
+      "size": 9,
+      "sha256": "8579ea960a23cabcf7feb8f1e2ea5e71998259193507ed690de550914568b842",
+      "ruleIds": [
+        "F001"
+      ],
+      "findingCount": 1
+    },
+    {
+      "id": "04-bad-magic",
+      "fileName": "04-bad-magic.fw",
+      "title": "坏魔数",
+      "description": "前 4 字节被破坏，F003",
+      "tags": [
+        "malformed"
+      ],
+      "size": 452,
+      "sha256": "104e84a82b790c1cca636a4c5d7f83bacc568a1d8aed52c6be0b5fb2bb066d54",
+      "ruleIds": [
+        "F003"
+      ],
+      "findingCount": 1
+    },
+    {
+      "id": "05-bad-header-crc",
+      "fileName": "05-bad-header-crc.fw",
+      "title": "头 CRC 损坏+保留位+加密位",
+      "description": "F002/F016/F019",
+      "tags": [
+        "crc",
+        "flags"
+      ],
+      "size": 340,
+      "sha256": "da9c5cea4ef65920b9f51e1b51eb16a3d092b4a29555e018369591e2595ea655",
+      "ruleIds": [
+        "F002",
+        "F016",
+        "F019"
+      ],
+      "findingCount": 3
+    },
+    {
+      "id": "06-entry-oob",
+      "fileName": "06-entry-oob.fw",
+      "title": "段越界",
+      "description": "表项指向文件外，F005",
+      "tags": [
+        "oob"
+      ],
+      "size": 112,
+      "sha256": "b9ccaa34f75f546982e2d8fc2fb86308f0299269808a55529b8688ab65d4999f",
+      "ruleIds": [
+        "F005"
+      ],
+      "findingCount": 1
+    },
+    {
+      "id": "07-partial-truncated",
+      "fileName": "07-partial-truncated.fw",
+      "title": "截断-段半切",
+      "description": "LZ 段尾部被切掉，F005/F006",
+      "tags": [
+        "truncated",
+        "lz"
+      ],
+      "size": 84,
+      "sha256": "b022cfba8181dc9ac3098b2fef6c2b78fea1cb6cb8db540d0881ae399771e527",
+      "ruleIds": [
+        "F005",
+        "F006",
+        "F013",
+        "F020"
+      ],
+      "findingCount": 4
+    },
+    {
+      "id": "08-overlap",
+      "fileName": "08-overlap.fw",
+      "title": "分区重叠+混合问题",
+      "description": "F012 重叠，外加 F010/F011/F013",
+      "tags": [
+        "overlap",
+        "mixed"
+      ],
+      "size": 333,
+      "sha256": "e95b32684f1c82da117565b1693b3c0ca9005cee7665908d6ca009b847ca9a56",
+      "ruleIds": [
+        "F007",
+        "F010",
+        "F011",
+        "F012",
+        "F013"
+      ],
+      "findingCount": 6
+    },
+    {
+      "id": "09-lz-truncated",
+      "fileName": "09-lz-truncated.fw",
+      "title": "LZ 流提前结束",
+      "description": "压缩流完整但 rawSize 虚高，F006",
+      "tags": [
+        "lz",
+        "malformed"
+      ],
+      "size": 96,
+      "sha256": "3db2e7ae8d56174d4dd6098d2f2da17c79ce4fca23ed1a6e9399d6dc41a8995c",
+      "ruleIds": [
+        "F006"
+      ],
+      "findingCount": 1
+    },
+    {
+      "id": "10-lz-invalid-token",
+      "fileName": "10-lz-invalid-token.fw",
+      "title": "LZ 非法 token",
+      "description": "输出为空即出现回溯匹配，F007",
+      "tags": [
+        "lz",
+        "malformed"
+      ],
+      "size": 71,
+      "sha256": "9b0923cad40074e65c053bb23c399e12e5de7cbecbb45eb452274c8f0ec89d0d",
+      "ruleIds": [
+        "F007"
+      ],
+      "findingCount": 1
+    },
+    {
+      "id": "11-bomb-ratio",
+      "fileName": "11-bomb-ratio.fw",
+      "title": "解压炸弹-声明比率",
+      "description": "rawSize/storedSize 超 100 倍，F014",
+      "tags": [
+        "bomb",
+        "lz"
+      ],
+      "size": 80,
+      "sha256": "4bdaad0dfa2105433d01176096dc8976151fae19944c3e0e13e5486c7f98ee99",
+      "ruleIds": [
+        "F007",
+        "F014"
+      ],
+      "findingCount": 2
+    },
+    {
+      "id": "12-bomb-hardcap",
+      "fileName": "12-bomb-hardcap.fw",
+      "title": "解压炸弹-硬上限(大文件)",
+      "description": "RLE 流可展开超 16 MiB，F014 硬截断，~12MB 压测样本",
+      "tags": [
+        "bomb",
+        "lz",
+        "large"
+      ],
+      "size": 11883932,
+      "sha256": "e7436d383c1df858b8b0276dfe61df491faca10e287dbb8bbf1da0764e207610",
+      "ruleIds": [
+        "F014"
+      ],
+      "findingCount": 1
+    },
+    {
+      "id": "13-sig-short",
+      "fileName": "13-sig-short.fw",
+      "title": "签名过短",
+      "description": "sigLength=16，F015",
+      "tags": [
+        "signature"
+      ],
+      "size": 120,
+      "sha256": "b35a7f7190944fbb4728bf6ad98beead893c70682e10e257a5eec85be6c8ad9a",
+      "ruleIds": [
+        "F015"
+      ],
+      "findingCount": 1
+    },
+    {
+      "id": "14-sig-malformed",
+      "fileName": "14-sig-malformed.fw",
+      "title": "签名段结构不足",
+      "description": "storedSize 小于 4+sigLength+32，纯 F008",
+      "tags": [
+        "signature",
+        "malformed"
+      ],
+      "size": 88,
+      "sha256": "27faaad9120a173caae4b39130bae405af423765d98898037a9911dddad84781",
+      "ruleIds": [
+        "F008"
+      ],
+      "findingCount": 1
+    },
+    {
+      "id": "15-sig-long-badalg",
+      "fileName": "15-sig-long-badalg.fw",
+      "title": "多签名+过长+未知算法",
+      "description": "F017/F009/F018",
+      "tags": [
+        "signature"
+      ],
+      "size": 728,
+      "sha256": "df1b1db7031a297b435d89d09cb56911dbdd997387bb8d68d16b4a626cd121e1",
+      "ruleIds": [
+        "F009",
+        "F017",
+        "F018"
+      ],
+      "findingCount": 3
+    },
+    {
+      "id": "16-mixed-findings",
+      "fileName": "16-mixed-findings.fw",
+      "title": "分区表越界",
+      "description": "头中表偏移指向 EOF 之外，纯 F004",
+      "tags": [
+        "malformed",
+        "table"
+      ],
+      "size": 340,
+      "sha256": "aec3112030a6895dbcc8b03edb94fc0ac08824bc3cd703814006ba7adf0500ce",
+      "ruleIds": [
+        "F002",
+        "F004"
+      ],
+      "findingCount": 2
+    }
+  ]
+}

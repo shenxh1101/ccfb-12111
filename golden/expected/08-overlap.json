@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "fileName": "08-overlap.fw",
+  "fileSize": 333,
+  "sha256": "e95b32684f1c82da117565b1693b3c0ca9005cee7665908d6ca009b847ca9a56",
+  "header": {
+    "magic": "FWAI",
+    "headerVersion": 1,
+    "headerSize": 32,
+    "fileSize": 333,
+    "partitionTableOffset": 32,
+    "partitionCount": 3,
+    "flags": 0,
+    "headerCrc32": 3935000927,
+    "reserved": "0000000000000000"
+  },
+  "partitions": [
+    {
+      "entryIndex": 0,
+      "name": "rootfs",
+      "entryType": 2,
+      "entryTypeLabel": "LZ",
+      "entryOffset": 140,
+      "storedSize": 33,
+      "rawSize": 648,
+      "entryCrc32": 1198663503,
+      "crcValid": false,
+      "truncated": false,
+      "unparseable": false,
+      "detail": {
+        "lz": {
+          "controlBytes": 1,
+          "literalTokens": 0,
+          "matchTokens": 0,
+          "consumed": 1,
+          "decompressedSize": 0
+        }
+      }
+    },
+    {
+      "entryIndex": 1,
+      "name": "data",
+      "entryType": 1,
+      "entryTypeLabel": "RAW",
+      "entryOffset": 125,
+      "storedSize": 128,
+      "rawSize": 256,
+      "entryCrc32": 2613359202,
+      "crcValid": false,
+      "truncated": false,
+      "unparseable": false,
+      "detail": {
+        "raw": {
+          "bytes": 128
+        }
+      }
+    },
+    {
+      "entryIndex": 2,
+      "name": "mystery",
+      "entryType": 9,
+      "entryTypeLabel": "UNKNOWN",
+      "entryOffset": 301,
+      "storedSize": 32,
+      "rawSize": 32,
+      "entryCrc32": 477466496,
+      "crcValid": true,
+      "truncated": false,
+      "unparseable": false,
+      "detail": null
+    }
+  ],
+  "findings": [
+    {
+      "ruleId": "F011",
+      "severity": "info",
+      "offset": 120,
+      "entryIndex": 2,
+      "message": "unknown partition entry type"
+    },
+    {
+      "ruleId": "F010",
+      "severity": "low",
+      "offset": 125,
+      "entryIndex": 1,
+      "message": "declared size does not match actual segment data"
+    },
+    {
+      "ruleId": "F012",
+      "severity": "high",
+      "offset": 125,
+      "entryIndex": 1,
+      "message": "partition storage intervals overlap"
+    },
+    {
+      "ruleId": "F013",
+      "severity": "medium",
+      "offset": 125,
+      "entryIndex": 1,
+      "message": "partition CRC-32 mismatch"
+    },
+    {
+      "ruleId": "F007",
+      "severity": "high",
+      "offset": 140,
+      "entryIndex": 0,
+      "message": "malformed LZ token: back-reference with empty output or token crossing segment boundary"
+    },
+    {
+      "ruleId": "F013",
+      "severity": "medium",
+      "offset": 140,
+      "entryIndex": 0,
+      "message": "partition CRC-32 mismatch"
+    }
+  ],
+  "signature": null,
+  "summary": {
+    "findingCounts": {
+      "critical": 0,
+      "high": 2,
+      "medium": 2,
+      "low": 1,
+      "info": 1
+    },
+    "totalFindings": 6,
+    "partitionsTotal": 3,
+    "partitionsTruncated": 0,
+    "partitionsUnparseable": 0
+  }
+}

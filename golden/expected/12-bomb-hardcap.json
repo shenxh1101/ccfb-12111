@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "fileName": "12-bomb-hardcap.fw",
+  "fileSize": 11883932,
+  "sha256": "e7436d383c1df858b8b0276dfe61df491faca10e287dbb8bbf1da0764e207610",
+  "header": {
+    "magic": "FWAI",
+    "headerVersion": 1,
+    "headerSize": 32,
+    "fileSize": 11883932,
+    "partitionTableOffset": 32,
+    "partitionCount": 1,
+    "flags": 0,
+    "headerCrc32": 1397624343,
+    "reserved": "0000000000000000"
+  },
+  "partitions": [
+    {
+      "entryIndex": 0,
+      "name": "rlebomb",
+      "entryType": 2,
+      "entryTypeLabel": "LZ",
+      "entryOffset": 68,
+      "storedSize": 11883864,
+      "rawSize": 17825792,
+      "entryCrc32": 2505824608,
+      "crcValid": true,
+      "truncated": false,
+      "unparseable": false,
+      "detail": {
+        "lz": {
+          "controlBytes": 699051,
+          "literalTokens": 1,
+          "matchTokens": 5592406,
+          "consumed": 11883864,
+          "decompressedSize": 16777216
+        }
+      }
+    }
+  ],
+  "findings": [
+    {
+      "ruleId": "F014",
+      "severity": "high",
+      "offset": 68,
+      "entryIndex": 0,
+      "message": "decompression bomb: compression ratio over 100x or output exceeded 16 MiB cap"
+    }
+  ],
+  "signature": null,
+  "summary": {
+    "findingCounts": {
+      "critical": 0,
+      "high": 1,
+      "medium": 0,
+      "low": 0,
+      "info": 0
+    },
+    "totalFindings": 1,
+    "partitionsTotal": 1,
+    "partitionsTruncated": 0,
+    "partitionsUnparseable": 0
+  }
+}

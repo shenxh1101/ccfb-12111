@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "fileName": "02-valid-lz-signed.fw",
+  "fileSize": 808,
+  "sha256": "90596bc0161e8ba81f99f8b8d36b809e1b88ebd42abfc970b8e00fd45935aa23",
+  "header": {
+    "magic": "FWAI",
+    "headerVersion": 1,
+    "headerSize": 32,
+    "fileSize": 808,
+    "partitionTableOffset": 32,
+    "partitionCount": 3,
+    "flags": 1,
+    "headerCrc32": 1970476178,
+    "reserved": "0000000000000000"
+  },
+  "partitions": [
+    {
+      "entryIndex": 0,
+      "name": "rootfs",
+      "entryType": 2,
+      "entryTypeLabel": "LZ",
+      "entryOffset": 140,
+      "storedSize": 67,
+      "rawSize": 912,
+      "entryCrc32": 3633585988,
+      "crcValid": true,
+      "truncated": false,
+      "unparseable": false,
+      "detail": {
+        "lz": {
+          "controlBytes": 8,
+          "literalTokens": 57,
+          "matchTokens": 1,
+          "consumed": 67,
+          "decompressedSize": 912
+        }
+      }
+    },
+    {
+      "entryIndex": 1,
+      "name": "config",
+      "entryType": 2,
+      "entryTypeLabel": "LZ",
+      "entryOffset": 207,
+      "storedSize": 533,
+      "rawSize": 4096,
+      "entryCrc32": 31184849,
+      "crcValid": true,
+      "truncated": false,
+      "unparseable": false,
+      "detail": {
+        "lz": {
+          "controlBytes": 47,
+          "literalTokens": 256,
+          "matchTokens": 115,
+          "consumed": 533,
+          "decompressedSize": 4096
+        }
+      }
+    },
+    {
+      "entryIndex": 2,
+      "name": "signature",
+      "entryType": 3,
+      "entryTypeLabel": "SIGNATURE",
+      "entryOffset": 740,
+      "storedSize": 68,
+      "rawSize": 68,
+      "entryCrc32": 4237339568,
+      "crcValid": true,
+      "truncated": false,
+      "unparseable": false,
+      "detail": {
+        "signature": {
+          "algorithm": 1,
+          "sigLength": 32,
+          "publicData": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        }
+      }
+    }
+  ],
+  "findings": [],
+  "signature": {
+    "present": true,
+    "entryIndex": 2,
+    "algorithm": 1,
+    "sigLength": 32,
+    "publicData": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+    "signedDigest": "d09906e67c44ba7868a5efbacd5f699c69a06370c9210cbf35356ca940717108"
+  },
+  "summary": {
+    "findingCounts": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 0
+    },
+    "totalFindings": 0,
+    "partitionsTotal": 3,
+    "partitionsTruncated": 0,
+    "partitionsUnparseable": 0
+  }
+}

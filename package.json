@@ -1,0 +1,17 @@
+{
+  "name": "fwai-firmware-audit-workbench",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Offline in-browser firmware audit workbench (FWAI format)",
+  "scripts": {
+    "test": "node --test test/golden.test.js test/parser.test.js",
+    "golden": "python3 -I reference/generate_samples.py",
+    "serve": "node tools/serve.js",
+    "audit": "node tools/audit.js",
+    "e2e": "node tools/e2e-check.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

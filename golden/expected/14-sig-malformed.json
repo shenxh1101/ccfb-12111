@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "fileName": "14-sig-malformed.fw",
+  "fileSize": 88,
+  "sha256": "27faaad9120a173caae4b39130bae405af423765d98898037a9911dddad84781",
+  "header": {
+    "magic": "FWAI",
+    "headerVersion": 1,
+    "headerSize": 32,
+    "fileSize": 88,
+    "partitionTableOffset": 32,
+    "partitionCount": 1,
+    "flags": 1,
+    "headerCrc32": 4124858268,
+    "reserved": "0000000000000000"
+  },
+  "partitions": [
+    {
+      "entryIndex": 0,
+      "name": "signature",
+      "entryType": 3,
+      "entryTypeLabel": "SIGNATURE",
+      "entryOffset": 68,
+      "storedSize": 20,
+      "rawSize": 20,
+      "entryCrc32": 4080027820,
+      "crcValid": true,
+      "truncated": false,
+      "unparseable": false,
+      "detail": {
+        "signature": {
+          "algorithm": 1,
+          "sigLength": 40,
+          "publicData": null
+        }
+      }
+    }
+  ],
+  "findings": [
+    {
+      "ruleId": "F008",
+      "severity": "high",
+      "offset": 68,
+      "entryIndex": 0,
+      "message": "signature segment shorter than 4 + sigLength + 32 bytes"
+    }
+  ],
+  "signature": {
+    "present": true,
+    "entryIndex": 0,
+    "algorithm": 1,
+    "sigLength": 40,
+    "publicData": null,
+    "signedDigest": null
+  },
+  "summary": {
+    "findingCounts": {
+      "critical": 0,
+      "high": 1,
+      "medium": 0,
+      "low": 0,
+      "info": 0
+    },
+    "totalFindings": 1,
+    "partitionsTotal": 1,
+    "partitionsTruncated": 0,
+    "partitionsUnparseable": 0
+  }
+}

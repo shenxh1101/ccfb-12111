@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "fileName": "07-partial-truncated.fw",
+  "fileSize": 84,
+  "sha256": "b022cfba8181dc9ac3098b2fef6c2b78fea1cb6cb8db540d0881ae399771e527",
+  "header": {
+    "magic": "FWAI",
+    "headerVersion": 1,
+    "headerSize": 32,
+    "fileSize": 98,
+    "partitionTableOffset": 32,
+    "partitionCount": 1,
+    "flags": 0,
+    "headerCrc32": 3073468338,
+    "reserved": "0000000000000000"
+  },
+  "partitions": [
+    {
+      "entryIndex": 0,
+      "name": "halfseg",
+      "entryType": 2,
+      "entryTypeLabel": "LZ",
+      "entryOffset": 68,
+      "storedSize": 30,
+      "rawSize": 960,
+      "entryCrc32": 3442597012,
+      "crcValid": false,
+      "truncated": true,
+      "unparseable": false,
+      "detail": {
+        "lz": {
+          "controlBytes": 2,
+          "literalTokens": 14,
+          "matchTokens": 0,
+          "consumed": 16,
+          "decompressedSize": 14
+        }
+      }
+    }
+  ],
+  "findings": [
+    {
+      "ruleId": "F020",
+      "severity": "low",
+      "offset": 8,
+      "entryIndex": -1,
+      "message": "header fileSize does not match actual file length"
+    },
+    {
+      "ruleId": "F005",
+      "severity": "high",
+      "offset": 68,
+      "entryIndex": 0,
+      "message": "partition segment extends beyond file boundary"
+    },
+    {
+      "ruleId": "F006",
+      "severity": "high",
+      "offset": 68,
+      "entryIndex": 0,
+      "message": "LZ stream ended before declared rawSize was reached"
+    },
+    {
+      "ruleId": "F013",
+      "severity": "medium",
+      "offset": 68,
+      "entryIndex": 0,
+      "message": "partition CRC-32 mismatch"
+    }
+  ],
+  "signature": null,
+  "summary": {
+    "findingCounts": {
+      "critical": 0,
+      "high": 2,
+      "medium": 1,
+      "low": 1,
+      "info": 0
+    },
+    "totalFindings": 4,
+    "partitionsTotal": 1,
+    "partitionsTruncated": 1,
+    "partitionsUnparseable": 0
+  }
+}

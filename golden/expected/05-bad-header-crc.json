@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "fileName": "05-bad-header-crc.fw",
+  "fileSize": 340,
+  "sha256": "da9c5cea4ef65920b9f51e1b51eb16a3d092b4a29555e018369591e2595ea655",
+  "header": {
+    "magic": "FWAI",
+    "headerVersion": 1,
+    "headerSize": 32,
+    "fileSize": 340,
+    "partitionTableOffset": 32,
+    "partitionCount": 1,
+    "flags": 2,
+    "headerCrc32": 3735928559,
+    "reserved": "aa00000000000000"
+  },
+  "partitions": [
+    {
+      "entryIndex": 0,
+      "name": "secure",
+      "entryType": 1,
+      "entryTypeLabel": "RAW",
+      "entryOffset": 68,
+      "storedSize": 272,
+      "rawSize": 272,
+      "entryCrc32": 2192316928,
+      "crcValid": true,
+      "truncated": false,
+      "unparseable": false,
+      "detail": {
+        "raw": {
+          "bytes": 272
+        }
+      }
+    }
+  ],
+  "findings": [
+    {
+      "ruleId": "F019",
+      "severity": "low",
+      "offset": 18,
+      "entryIndex": -1,
+      "message": "encrypted flag is set; encrypted firmware is not supported by this workbench"
+    },
+    {
+      "ruleId": "F002",
+      "severity": "critical",
+      "offset": 20,
+      "entryIndex": -1,
+      "message": "header CRC-32 mismatch"
+    },
+    {
+      "ruleId": "F016",
+      "severity": "medium",
+      "offset": 24,
+      "entryIndex": -1,
+      "message": "reserved field contains non-zero bytes"
+    }
+  ],
+  "signature": null,
+  "summary": {
+    "findingCounts": {
+      "critical": 1,
+      "high": 0,
+      "medium": 1,
+      "low": 1,
+      "info": 0
+    },
+    "totalFindings": 3,
+    "partitionsTotal": 1,
+    "partitionsTruncated": 0,
+    "partitionsUnparseable": 0
+  }
+}

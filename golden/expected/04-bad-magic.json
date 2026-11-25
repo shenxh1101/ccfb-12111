@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "fileName": "04-bad-magic.fw",
+  "fileSize": 452,
+  "sha256": "104e84a82b790c1cca636a4c5d7f83bacc568a1d8aed52c6be0b5fb2bb066d54",
+  "header": null,
+  "partitions": [],
+  "findings": [
+    {
+      "ruleId": "F003",
+      "severity": "critical",
+      "offset": 0,
+      "entryIndex": -1,
+      "message": "bad magic: expected \"FWAI\""
+    }
+  ],
+  "signature": null,
+  "summary": {
+    "findingCounts": {
+      "critical": 1,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 0
+    },
+    "totalFindings": 1,
+    "partitionsTotal": 0,
+    "partitionsTruncated": 0,
+    "partitionsUnparseable": 0
+  }
+}

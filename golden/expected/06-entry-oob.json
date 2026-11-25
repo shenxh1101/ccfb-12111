@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "fileName": "06-entry-oob.fw",
+  "fileSize": 112,
+  "sha256": "b9ccaa34f75f546982e2d8fc2fb86308f0299269808a55529b8688ab65d4999f",
+  "header": {
+    "magic": "FWAI",
+    "headerVersion": 1,
+    "headerSize": 32,
+    "fileSize": 112,
+    "partitionTableOffset": 32,
+    "partitionCount": 1,
+    "flags": 0,
+    "headerCrc32": 2637806107,
+    "reserved": "0000000000000000"
+  },
+  "partitions": [
+    {
+      "entryIndex": 0,
+      "name": "ghost",
+      "entryType": 1,
+      "entryTypeLabel": "RAW",
+      "entryOffset": 4208,
+      "storedSize": 44,
+      "rawSize": 44,
+      "entryCrc32": 1398506403,
+      "crcValid": null,
+      "truncated": false,
+      "unparseable": true,
+      "detail": null
+    }
+  ],
+  "findings": [
+    {
+      "ruleId": "F005",
+      "severity": "high",
+      "offset": 4208,
+      "entryIndex": 0,
+      "message": "partition segment extends beyond file boundary"
+    }
+  ],
+  "signature": null,
+  "summary": {
+    "findingCounts": {
+      "critical": 0,
+      "high": 1,
+      "medium": 0,
+      "low": 0,
+      "info": 0
+    },
+    "totalFindings": 1,
+    "partitionsTotal": 1,
+    "partitionsTruncated": 0,
+    "partitionsUnparseable": 1
+  }
+}

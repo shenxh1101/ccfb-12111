@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FWAI 离线固件审计工作台</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">FW</div>
+      <div>
+        <div class="brand-title">固件审计工作台</div>
+        <div class="brand-sub">offline · in-browser</div>
+      </div>
+    </div>
+    <nav id="nav">
+      <a href="#/upload" data-route="upload"><span class="ico">⬆</span>上传分析</a>
+      <a href="#/partitions" data-route="partitions"><span class="ico">▦</span>分区视图</a>
+      <a href="#/findings" data-route="findings"><span class="ico">!</span>漏洞列表</a>
+      <a href="#/library" data-route="library"><span class="ico">❒</span>样本库</a>
+      <a href="#/report" data-route="report"><span class="ico">⇩</span>报告导出</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div id="current-file" class="current-file empty">尚未载入固件</div>
+      <div class="golden-status" id="golden-status"></div>
+    </div>
+  </aside>
+
+  <main class="content">
+    <section class="page" id="page-upload"></section>
+    <section class="page" id="page-partitions" hidden></section>
+    <section class="page" id="page-findings" hidden></section>
+    <section class="page" id="page-library" hidden></section>
+    <section class="page" id="page-report" hidden></section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

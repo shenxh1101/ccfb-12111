@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "fileName": "15-sig-long-badalg.fw",
+  "fileSize": 728,
+  "sha256": "df1b1db7031a297b435d89d09cb56911dbdd997387bb8d68d16b4a626cd121e1",
+  "header": {
+    "magic": "FWAI",
+    "headerVersion": 1,
+    "headerSize": 32,
+    "fileSize": 728,
+    "partitionTableOffset": 32,
+    "partitionCount": 2,
+    "flags": 1,
+    "headerCrc32": 2634531761,
+    "reserved": "0000000000000000"
+  },
+  "partitions": [
+    {
+      "entryIndex": 0,
+      "name": "sig1",
+      "entryType": 3,
+      "entryTypeLabel": "SIGNATURE",
+      "entryOffset": 104,
+      "storedSize": 68,
+      "rawSize": 68,
+      "entryCrc32": 2180469196,
+      "crcValid": true,
+      "truncated": false,
+      "unparseable": false,
+      "detail": {
+        "signature": {
+          "algorithm": 1,
+          "sigLength": 32,
+          "publicData": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        }
+      }
+    },
+    {
+      "entryIndex": 1,
+      "name": "sig2",
+      "entryType": 3,
+      "entryTypeLabel": "SIGNATURE",
+      "entryOffset": 172,
+      "storedSize": 556,
+      "rawSize": 556,
+      "entryCrc32": 1932375682,
+      "crcValid": true,
+      "truncated": false,
+      "unparseable": false,
+      "detail": {
+        "signature": {
+          "algorithm": 7,
+          "sigLength": 520,
+          "publicData": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        }
+      }
+    }
+  ],
+  "findings": [
+    {
+      "ruleId": "F017",
+      "severity": "medium",
+      "offset": 172,
+      "entryIndex": 1,
+      "message": "more than one signature partition entry"
+    },
+    {
+      "ruleId": "F018",
+      "severity": "medium",
+      "offset": 172,
+      "entryIndex": 1,
+      "message": "unknown signature algorithm (only algorithm 1 / HMAC-SHA256 is defined)"
+    },
+    {
+      "ruleId": "F009",
+      "severity": "medium",
+      "offset": 174,
+      "entryIndex": 1,
+      "message": "signature length exceeds 512 bytes"
+    }
+  ],
+  "signature": {
+    "present": true,
+    "entryIndex": 0,
+    "algorithm": 1,
+    "sigLength": 32,
+    "publicData": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+    "signedDigest": "3eafc6b9d9db53bde9c20e9a30013a5e34a99dbdb1bf0c52cb2920d911a23167"
+  },
+  "summary": {
+    "findingCounts": {
+      "critical": 0,
+      "high": 0,
+      "medium": 3,
+      "low": 0,
+      "info": 0
+    },
+    "totalFindings": 3,
+    "partitionsTotal": 2,
+    "partitionsTruncated": 0,
+    "partitionsUnparseable": 0
+  }
+}

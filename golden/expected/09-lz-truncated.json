@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "fileName": "09-lz-truncated.fw",
+  "fileSize": 96,
+  "sha256": "3db2e7ae8d56174d4dd6098d2f2da17c79ce4fca23ed1a6e9399d6dc41a8995c",
+  "header": {
+    "magic": "FWAI",
+    "headerVersion": 1,
+    "headerSize": 32,
+    "fileSize": 96,
+    "partitionTableOffset": 32,
+    "partitionCount": 1,
+    "flags": 0,
+    "headerCrc32": 2113868094,
+    "reserved": "0000000000000000"
+  },
+  "partitions": [
+    {
+      "entryIndex": 0,
+      "name": "inflated",
+      "entryType": 2,
+      "entryTypeLabel": "LZ",
+      "entryOffset": 68,
+      "storedSize": 28,
+      "rawSize": 384,
+      "entryCrc32": 2951271819,
+      "crcValid": true,
+      "truncated": false,
+      "unparseable": false,
+      "detail": {
+        "lz": {
+          "controlBytes": 3,
+          "literalTokens": 23,
+          "matchTokens": 1,
+          "consumed": 28,
+          "decompressedSize": 184
+        }
+      }
+    }
+  ],
+  "findings": [
+    {
+      "ruleId": "F006",
+      "severity": "high",
+      "offset": 68,
+      "entryIndex": 0,
+      "message": "LZ stream ended before declared rawSize was reached"
+    }
+  ],
+  "signature": null,
+  "summary": {
+    "findingCounts": {
+      "critical": 0,
+      "high": 1,
+      "medium": 0,
+      "low": 0,
+      "info": 0
+    },
+    "totalFindings": 1,
+    "partitionsTotal": 1,
+    "partitionsTruncated": 0,
+    "partitionsUnparseable": 0
+  }
+}
